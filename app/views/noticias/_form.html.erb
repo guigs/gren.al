@@ -1,0 +1,38 @@
+<%= form_for(@noticia) do |f| %>
+  <% if @noticia.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@noticia.errors.count, "erro") %> impediu esta notícia de ser salva:</h2>
+
+      <ul>
+      <% @noticia.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data_hora, 'Data' %><br />
+    <%= f.datetime_select :data_hora %>
+  </div>
+  <div class="field">
+    <%= f.label :titulo, 'Título' %><br />
+    <%= f.text_field :titulo, :size => 80 %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitulo, 'Subtítulo' %><br />
+    <%= f.text_area :subtitulo, :cols => 60, :rows => 3 %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url, :size => 80 %>
+    <a href="#" onclick="window.open($('noticia_url').value);">Testar</a>
+  </div>
+  <div class="field">
+    <%= f.label :jogo, 'Vinculada ao jogo' %><br />
+    <%= f.select :jogo_id, Jogo.find(:all).collect {|j| ["Grenal nº#{j.numero} #{j.data.to_s_br}", j.id]}, {:include_blank => true} %>
+  </div>
+  <div class="actions">
+    <%= f.submit @noticia.new_record? ? 'Criar' : 'Atualizar' %>
+  </div>
+<% end %>

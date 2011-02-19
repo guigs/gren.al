@@ -1,0 +1,29 @@
+<%= form_for(@equipe) do |f| %>
+  <% if @equipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equipe.errors.count, "error") %> impediram este time de ser gravado:</h2>
+
+      <ul>
+      <% @equipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :nome_oficial %><br />
+    <%= f.text_field :nome_oficial %>
+  </div>
+  <div class="field">
+    <%= f.label :fundacao, 'Fundação' %><br />
+    <%= f.date_select :fundacao %>
+  </div>
+  <div class="actions">
+    <%= f.submit @equipe.new_record? ? 'Criar' : 'Atualizar' %>
+  </div>
+<% end %>

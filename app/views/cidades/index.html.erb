@@ -1,0 +1,23 @@
+<h1>Cidades</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cidades.each do |cidade| %>
+  <tr>
+    <td><%= cidade.nome %></td>
+    <td><%= link_to 'Ver', cidade %></td>
+    <td><%= link_to 'Editar', edit_cidade_path(cidade) %></td>
+    <td><%= link_to 'Excluir', cidade, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Cadastrar cidade', new_cidade_path %>

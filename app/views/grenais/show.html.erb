@@ -1,0 +1,59 @@
+<% content_for :title do %>
+Grenal nº <%=@grenal.numero %> - <%= Date.parse(@grenal.data.to_s).to_s_br %>
+<% end %>
+<h1>Grenal <span class="numero">nº <%=@grenal.numero %></span><span class="data"> - <%= @grenal.data.to_s_br %></span></h1>
+
+<div class="estadio">
+  <p>
+    <strong>Mandante:</strong>
+    <%= @grenal.equipe_mandante.nome %>
+  </p>
+  <strong>Estádio:</strong>
+  <%= @grenal.estadio.nome %><br />
+  <%= image_tag(@grenal.estadio.foto_url) %>
+</div>
+
+<div class="anuncio_conteudo">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9853533377118532";
+/* Gren.al - Quadrado */
+google_ad_slot = "3992729348";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div>
+  <%= @grenal.descricao.html_safe %>
+  <h2>Notícias:</h2>
+  <%
+    data = nil
+    for noticia in @grenal.noticias do
+      data_noticia = Date.parse(noticia.data_hora.to_s)
+      hora_noticia = Time.parse(noticia.data_hora.to_s)
+      if data_noticia != data
+        unless data.nil?
+          %></ul><%
+        end
+        data = data_noticia
+        %><h2><%
+        if data == Date.today
+          %>Hoje<%
+        else
+          %><%= data.to_s_br %><%
+        end %>
+        </h2>
+        <ul id="noticias"><%
+      end %>
+    <li>
+      <%= hora_noticia.strftime("%H:%M") %>
+      <a href="<%= noticia.url %>"><%=h noticia.titulo %></a><br />
+      <span class="subtitulo"><%=h noticia.subtitulo %></span><br />
+    </li>
+    <% end %>
+  </ul>
+</div>

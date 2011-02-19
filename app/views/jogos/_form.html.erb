@@ -1,0 +1,46 @@
+<%= form_for(@jogo) do |f| %>
+  <% if @jogo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jogo.errors.count, "error") %> impediram este jogo de ser gravado:</h2>
+
+      <ul>
+      <% @jogo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :numero %><br />
+    <%= f.text_field :numero, :size => 4 %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao, 'Descrição (html)' %><br />
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :estadio %><br />
+    <%= f.select :estadio_id, Estadio.find(:all).collect {|e| [e.nome, e.id]}, {:include_blank => true} %>
+  </div>
+  <div class="field">
+    <%= f.label :equipe_mandante %><br />
+    <%= f.select :equipe_mandante_id, Equipe.find(:all).collect {|e| [e.nome, e.id]}, {:include_blank => true} %>
+  </div>
+  <div class="field">
+    <%= f.label :equipe_visitante %><br />
+    <%= f.select :equipe_visitante_id, Equipe.find(:all).collect {|e| [e.nome, e.id]}, {:include_blank => true} %>
+  </div>
+  <div class="field">
+    Placar<br />
+    <%= f.text_field :placar_mandante, :size => 2 %> X
+    <%= f.text_field :placar_visitante, :size => 2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit @jogo.new_record? ? 'Criar' : 'Atualizar' %>
+  </div>
+<% end %>

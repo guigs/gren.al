@@ -1,0 +1,40 @@
+<h1>Notícias</h1>
+
+<table>
+  <tr>
+    <th>Grenal</th>
+    <th>Data</th>
+    <th>Notícia</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @noticias.each do |noticia| %>
+  <tr>
+    <td><%= noticia.jogo.numero %></td>
+    <td><%= noticia.data_hora.to_s_br %></td>
+    <td>
+      <a href="<%= noticia.url %>"><%=h noticia.titulo %></a><br />
+      <%=h noticia.subtitulo %>
+    </td>
+    <td><%= link_to 'Ver', noticia %></td>
+    <td><%= link_to 'Editar', edit_noticia_path(noticia) %></td>
+    <td><%= link_to 'Excluir', noticia, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Notícia', new_noticia_path %>
+<% for feed_url in [
+    'http://www2.odiario.net/rss/rss/categoria/2',
+    'http://www.clicrbs.com.br/jsp/rssfeed.jspx?sect_id=802&uf=1&local=1&channel=13',
+    'http://globoesporte.globo.com/dynamo/futebol/campeonatos-estaduais/campeonato-gaucho/rss2.xml',
+    'http://www.gazetaesportiva.net/rss/22.xml',
+    'http://www.gazetaesportiva.net/rss/89.xml',
+  ] %>
+  <br />
+  <%= link_to feed_url, pesquisa_feed_noticias_path(:feed_url => feed_url).gsub(/%2F/, '/') %>
+<% end %>

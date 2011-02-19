@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Data hora:</b>
+  <%= @noticia.data_hora %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @noticia.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_noticia_path(@noticia) %> |
+<%= link_to 'Back', noticias_path %>

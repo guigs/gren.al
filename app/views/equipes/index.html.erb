@@ -1,0 +1,27 @@
+<h1>Times</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Nome oficial</th>
+    <th>Fundação</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @equipes.each do |equipe| %>
+  <tr>
+    <td><%= equipe.nome %></td>
+    <td><%= equipe.nome_oficial %></td>
+    <td><%= equipe.fundacao %></td>
+    <td><%= link_to 'Ver', equipe %></td>
+    <td><%= link_to 'Editar', edit_equipe_path(equipe) %></td>
+    <td><%= link_to 'Excluir', equipe, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Cadastrar time', new_equipe_path %>

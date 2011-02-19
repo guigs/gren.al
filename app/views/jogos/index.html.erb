@@ -1,0 +1,29 @@
+<h1>Jogos</h1>
+
+<table>
+  <tr>
+    <th>Número</th>
+    <th>Data</th>
+    <th>Estádio</th>
+    <th>Jogo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jogos.each do |jogo| %>
+  <tr>
+    <td><%= jogo.numero %></td>
+    <td><%= jogo.data %></td>
+    <td><%= jogo.estadio.nome %></td>
+    <td><%= jogo.equipe_mandante.nome %> <%= jogo.try(:placar_mandante) %> X <%= jogo.try(:placar_visitante) %> <%= jogo.equipe_visitante.nome %></td>
+    <td><%= link_to 'Ver', jogo %></td>
+    <td><%= link_to 'Editar', edit_jogo_path(jogo) %></td>
+    <td><%= link_to 'Excluir', jogo, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Cadastrar jogo', new_jogo_path %>

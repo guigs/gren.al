@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jogo <%=@jogo.id %></h1>
+
+<p>
+  <b>Data:</b>
+  <%= @jogo.data.to_s_br %>
+</p>
+
+<p>
+  <b>Estádio:</b>
+  <%= @jogo.estadio.nome %><br />
+  <%= image_tag(@jogo.estadio.foto_url) %>
+</p>
+
+<p>
+  <b>Mandante:</b>
+  <%= @jogo.equipe_mandante.nome %>
+</p>
+
+<p>
+  <b>Notícias:</b><br />
+  <ul id="noticias">
+    <% for noticia in @jogo.noticias do %>
+    <li>
+      <%= noticia.data_hora.to_s_br %>
+      <a href="<%= noticia.url %>"><%=h noticia.titulo %></a><br />
+      <span style="color: #505050; font-size: 10px;"><%=h noticia.subtitulo %></span><br />
+    </li>
+    <% end %>
+  </ul>
+</p>

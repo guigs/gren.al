@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @equipe.nome %></h1>
+
+<p>
+  <b>Nome oficial:</b>
+  <%= @equipe.nome_oficial %>
+</p>
+
+<p>
+  <b>Fundação:</b>
+  <%= @equipe.fundacao %>
+</p>
+
+
+<%= link_to 'Editar', edit_equipe_path(@equipe) %> |
+<%= link_to 'Voltar', equipes_path %>

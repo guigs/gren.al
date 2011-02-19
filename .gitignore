@@ -1,0 +1,8 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+nbproject
+config/database.yml
+config/setup_load_paths.rb
+config/initializers/secret_token.rb

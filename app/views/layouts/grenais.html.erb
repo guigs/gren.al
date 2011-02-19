@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
+<head>
+  <title><%= yield :title %></title>
+  <%= stylesheet_link_tag 'grenal.css' %>
+  <%= javascript_include_tag 'grenal.js' %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20780961-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+  <script type="text/javascript">
+    window.onresize = bodyResize;
+  </script>
+
+</head>
+<body onload="bodyLoad()">
+  <div class="logo">
+    <h1><span class="http">http://</span><span class="gremio">gre</span><span class="inter">n<span class="ponto">.</span>al</span></h1>
+  </div>
+  <div class="pesquisa">
+    <form action="http://www.google.com.br/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-9853533377118532:6947978741" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <span class="busca_box">
+          <input class="texto_busca" type="text" name="q" size="55" />
+        </span>
+        <%= image_submit_tag('botao_busca.png', :name=>'sa', :class => 'botao_busca') %>
+      </div>
+    </form>
+
+    <script type="text/javascript" src="http://www.google.com.br/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+  </div>
+  <p class="cabecalho">O site dedicado ao maior clássico do futebol brasileiro e mundial.</p>
+
+  <hr />
+
+  <div class="links_linha">
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-9853533377118532";
+  /* Gren.al - Links linha */
+  google_ad_slot = "0944775158";
+  google_ad_width = 728;
+  google_ad_height = 15;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+  </div>
+
+  <hr />
+
+  <div class="anuncio_banner">
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-9853533377118532";
+  /* Gren.al - Leaderboard */
+  google_ad_slot = "2683417938";
+  google_ad_width = 728;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+  </div>
+
+  <div class="anuncio_links">
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-9853533377118532";
+  /* Gren.al - Links */
+  google_ad_slot = "7081634877";
+  google_ad_width = 180;
+  google_ad_height = 90;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+  </div>
+
+  <div style="clear: both;"></div>
+
+  <div class="lateral">
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-9853533377118532";
+  /* Gren.al - Arranha-céu */
+  google_ad_slot = "4299241717";
+  google_ad_width = 160;
+  google_ad_height = 600;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+  </div>
+  <div id="conteudo" class="conteudo" style="width: 710px;">
+    <%= yield %>
+  </div>
+
+  <hr />
+  <div class="rodape">
+    <p>Para informações ou sugestões, entre em contato: classicos.gren.al@gmail.com</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @estadio.nome %>
+</p>
+
+<p>
+  <b>Nome oficial:</b>
+  <%= @estadio.nome_oficial %>
+</p>
+
+<p>
+  <b>Capacidade:</b>
+  <%= @estadio.capacidade %>
+</p>
+
+<p>
+  <b>Data inauguração:</b>
+  <%= @estadio.data_inauguracao %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @estadio.equipe.try(:nome) %>
+</p>
+
+<%= link_to 'Editar', edit_estadio_path(@estadio) %> |
+<%= link_to 'Voltar', estadios_path %>

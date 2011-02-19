@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  nome_oficial: MyString
+  capacidade: 
+  data_inauguracao: 
+
+two:
+  nome: MyString
+  nome_oficial: MyString
+  capacidade: 
+  data_inauguracao: 

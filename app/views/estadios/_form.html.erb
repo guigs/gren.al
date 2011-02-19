@@ -1,0 +1,37 @@
+<%= form_for(@estadio) do |f| %>
+  <% if @estadio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estadio.errors.count, "error") %> impediram este estádio de ser gravado:</h2>
+
+      <ul>
+      <% @estadio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :nome_oficial %><br />
+    <%= f.text_field :nome_oficial %>
+  </div>
+  <div class="field">
+    <%= f.label :capacidade %><br />
+    <%= f.text_field :capacidade %>
+  </div>
+  <div class="field">
+    <%= f.label :data_inauguracao, 'Data inauguração' %><br />
+    <%= f.date_select :data_inauguracao %>
+  </div>
+  <div class="field">
+    <%= f.label :equipe, 'Time' %><br />
+    <%= f.select :equipe_id, Equipe.find(:all).collect {|e| [e.nome, e.id]}, {:include_blank => true} %>
+  </div>
+  <div class="actions">
+    <%= f.submit @estadio.new_record? ? 'Criar' : 'Atualizar' %>
+  </div>
+<% end %>
